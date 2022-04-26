@@ -1,4 +1,5 @@
 import { Inject, Injectable, Scope } from '@nestjs/common';
+import { ConfigService } from '@nestjs/config';
 import { REQUEST } from '@nestjs/core';
 import { Request } from 'express';
 import { MetricsService } from '../metrics/metrics.service';
@@ -13,6 +14,7 @@ export class CatsService {
   constructor(
     @Inject(REQUEST) private request: Request,
     private metricsService: MetricsService,
+    private configService: ConfigService,
   ) {}
 
   create(createCatDto: CreateCatDto) {
@@ -23,6 +25,10 @@ export class CatsService {
   }
 
   findAll() {
+    //ConfigModule test
+    console.log(this.configService.get<string>('TEST_VARIABLE'));
+    //---
+
     const now = Date.now();
     return new Promise((resolve) => {
       setTimeout(() => {

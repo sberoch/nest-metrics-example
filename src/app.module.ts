@@ -7,9 +7,15 @@ import { CatsModule } from './cats/cats.module';
 import { AuthModule } from './auth/auth.module';
 import { APP_PIPE } from '@nestjs/core';
 import { ExamplePipe } from './pipes/example-pipe.pipe';
+import { ConfigModule } from '@nestjs/config';
 
 @Module({
-  imports: [MetricsModule, CatsModule, AuthModule],
+  imports: [
+    MetricsModule,
+    CatsModule,
+    AuthModule,
+    ConfigModule.forRoot({ isGlobal: true }),
+  ],
   controllers: [AppController],
   providers: [
     {
