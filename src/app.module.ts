@@ -8,6 +8,7 @@ import { AuthModule } from './auth/auth.module';
 import { APP_PIPE } from '@nestjs/core';
 import { ExamplePipe } from './pipes/example-pipe.pipe';
 import { ConfigModule } from '@nestjs/config';
+import { HealthModule } from './health/health.module';
 
 @Module({
   imports: [
@@ -15,6 +16,7 @@ import { ConfigModule } from '@nestjs/config';
     CatsModule,
     AuthModule,
     ConfigModule.forRoot({ isGlobal: true }),
+    HealthModule,
   ],
   controllers: [AppController],
   providers: [
